@@ -12,19 +12,25 @@ public class OrderLogic {
 
     public void doOrder(){
         try {
-            Handler logFileHandler = new FileHandler("Z:\\log_file.log");
+            //создаем лог файл
+            Handler logFileHandler = new FileHandler("C:\\TMP\\log_file.log");
+            //Консоль для обработчика
             ConsoleHandler consoleHandler = new ConsoleHandler();
+            //Add a log Handler to receive logging messages.
             log.addHandler(logFileHandler);
             log.addHandler(consoleHandler);
 
             //Setting levels to handlers and LOGGER
+            //Levels: severe, warning, info, config, fine, finer, finest
             consoleHandler.setLevel(Level.ALL);
             logFileHandler.setLevel(Level.ALL);
             log.setLevel(Level.ALL);
 
+            //выводим в консоль уведомление конфигурации
             log.config("Configuration done.");
             //Console handler removed
             log.removeHandler(consoleHandler);
+            //Логируем инфо
             log.log(Level.FINE, "Finer logged");
 
             //Какая то логика
